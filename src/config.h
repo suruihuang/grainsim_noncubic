@@ -36,7 +36,10 @@ struct config_t
 		}
 	}
 	// Modify for slurm batch process with input and output override
-	void load_config(const std::string &config_path, const std::string &initial_state_override, const std::string &output_override)
+	void load_config(const std::string &config_path, 
+		const std::string &initial_state_override, 
+		const std::string &output_override,
+		int transition_count_override)
 	{
 		//std::ifstream cfgfile("grainsim_config.txt");
 		std::ifstream cfgfile(config_path);
@@ -142,6 +145,10 @@ struct config_t
 		}
 		if (!output_override.empty()) {
 			output_folder = output_override;
+		}
+		// overrite transition count
+		if (transition_count_override>= 0) {
+			transition_count = transition_count_override;
 		}
 		// make sure ends with slash
 		if (!output_folder.empty()) {

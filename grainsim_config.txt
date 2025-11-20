@@ -1,11 +1,9 @@
 # .vtk or .ph that contains the initial state.
 
 #INITIAL_STATE_FILE = out/Seed_0000_0000000.ph
-#INITIAL_STATE_FILE = mc_seeds/0Seed256-256-256_T1_0000_0000000.ph
-INITIAL_STATE_FILE = mc_seeds/0Seed256-256-1024_T1_0000_0000000.ph
-
+INITIAL_STATE_FILE = out/0Seed_DiffusionCouple_T1_0000_0000000.ph
 # The folder to output VTK files to (make sure this ends with / or \\).
-OUTPUT_FOLDER = out/
+OUTPUT_FOLDER = results/
 # The prefix to use when creating VTK files.
 IDENTIFIER = test
 
@@ -23,7 +21,7 @@ DEFAULT_MOBILITY = 0.1
 # The mobility for transformed boundaries.
 TRANSITIONED_MOBILITY = 1.0
 # How often to transition boundaries (in timesteps).
-TRANSITION_INTERVAL = 500000
+TRANSITION_INTERVAL = 5000000
 # How many boundaries to transition at a time.
 TRANSITION_COUNT = 100
 # What percent of transitions to propagate vs. random flip.

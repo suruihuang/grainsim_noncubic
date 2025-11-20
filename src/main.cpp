@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
 	std::string config_path = "grainsim_config.txt";
 	std::string init_override;
 	std::string out_override;
+	int transition_override = -1;   // -1 = don't override
+
 	for(int i = 1; i < argc; ++i) {
 		std::string arg = argv[i];
 		// config file path
@@ -45,6 +47,10 @@ int main(int argc, char *argv[])
 		else if (arg == "--output" && i+1 < argc) {
 			out_override = argv[++i];
 		}
+		// override with transition count
+		else if (arg == "--transition-count" && i+1 < argc) {
+			transition_override = std::atoi(argv[++i]);
+		}
 		else {
 			std::cerr << "Unknown or incomplete argument: " << arg << "\n\n";
 			print_usage();
@@ -53,7 +59,7 @@ int main(int argc, char *argv[])
 	}
 	// Load the config file.
 	config_t cfg;
-	cfg.load_config(config_path, init_override, out_override);
+	cfg.load_config(config_path, init_override, out_override, transition_override);
 
 	// Create the lattice from file.
 	lattice_t *cube;
